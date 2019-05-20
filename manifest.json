@@ -2,5 +2,9 @@
     "name": "gTab",
     "version": "1.0",
     "description": "gTab is a modern tab management extension for Google Chrome.",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
     "manifest_version": 2
 }
