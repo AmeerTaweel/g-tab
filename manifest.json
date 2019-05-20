@@ -1,0 +1,6 @@
+{
+    "name": "gTab",
+    "version": "1.0",
+    "description": "gTab is a modern tab management extension for Google Chrome.",
+    "manifest_version": 2
+}
