@@ -1,2 +1,2 @@
 # gTab
-A tab management extinction for Google Chrome.
+A tab management extension for Google Chrome.
