@@ -16,5 +16,11 @@
             "128": "recourses/images/icons/get_started128.png"
         }
     },
+    "icons": {
+        "16": "recourses/images/icons/get_started16.png",
+        "48": "recourses/images/icons/get_started48.png",
+        "32": "recourses/images/icons/get_started32.png",
+        "128": "recourses/images/icons/get_started128.png"
+    },
     "manifest_version": 2
 }
