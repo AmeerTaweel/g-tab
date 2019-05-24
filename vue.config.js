@@ -5,7 +5,7 @@ module.exports = {
     plugins: [
       new CopyWebpackPlugin([
         { from: `manifest.json` },
-        { from: `./src/background.js` }
+        { from: `./src/background.js`, to: `js` }
       ])
     ]
   }
