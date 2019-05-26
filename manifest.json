@@ -1,7 +1,7 @@
 {
     "name": "gTab",
     "version": "1.0",
-    "description": "gTab is a tab management extinction for Google Chrome, built with Vue.js.",
+    "description": "gTab is a tab management extension for Google Chrome, built with Vue.js.",
     "permissions": ["storage"],
     "background": {
         "scripts": ["./js/background.js"],

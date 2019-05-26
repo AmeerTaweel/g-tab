@@ -1,6 +1,6 @@
 # gTab
 
-gTab is a tab management extinction for Google Chrome, built with `Vue.js`.
+gTab is a tab management extension for Google Chrome, built with `Vue.js`.
 
 ## Project setup
 
