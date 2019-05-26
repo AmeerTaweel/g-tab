@@ -1,9 +1,5 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" class="yellow-gradient">
     <router-view/>
   </div>
 </template>
@@ -14,26 +10,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+  color: black;
+  user-select: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+/* Icons */
 
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -45,5 +31,35 @@
   -webkit-font-smoothing: antialiased;
   /* Support for Chrome. */
   text-rendering: optimizeLegibility;
+}
+
+.normal-icon {
+  font-size: 24px;
+}
+
+.large-icon {
+  font-size: 48px;
+}
+
+/* Backgrounds */
+
+.yellow-gradient {
+  background: #fceabb;  /* fallback for old browsers */
+  background: linear-gradient(to bottom right, #f8b500, #fceabb);
+}
+
+.black-gradient {
+  background: #000000;  /* fallback for old browsers */
+  background: linear-gradient(to bottom right, #434343, #000000);
+}
+
+/* Other */
+
+.pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
 }
 </style>
