@@ -41,6 +41,12 @@
   font-size: 48px;
 }
 
+/* Text */
+
+.text-accent {
+  color: #f8b500;
+}
+
 /* Backgrounds */
 
 .yellow-gradient {
