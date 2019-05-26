@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="d-flex justify-content-between align-items-center black-gradient primary-text shadow p-2">
+    <div class="d-flex justify-content-between align-items-center black-gradient text-accent shadow p-2">
       <h1 class="ml-2 mr-5">gTab</h1>
       <i class="material-icons large-icon ml-5 mr-2 p-2 pointer">add</i>
     </div>
