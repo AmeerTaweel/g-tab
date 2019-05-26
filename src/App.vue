@@ -4,68 +4,57 @@
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: black;
-  user-select: none;
-}
+<style lang="sass">
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: black
+  user-select: none
 
-/* Icons */
+// Icons:
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Chrome. */
-  text-rendering: optimizeLegibility;
-}
+.material-icons
+  font-family: 'Material Icons'
+  font-weight: normal
+  font-style: normal
+  display: inline-block
+  line-height: 1
+  text-transform: none
+  letter-spacing: normal
+  word-wrap: normal
+  white-space: nowrap
+  direction: ltr
+  -webkit-font-smoothing: antialiased // Support for all WebKit browsers.
+  text-rendering: optimizeLegibility // Support for Chrome.
 
-.normal-icon {
-  font-size: 24px;
-}
+.normal-icon
+  font-size: 24px
 
-.large-icon {
-  font-size: 48px;
-}
+.large-icon
+  font-size: 48px
 
-/* Text */
+// Text:
 
-.text-accent {
-  color: #f8b500;
-}
+.text-accent
+  color: #f8b500
 
-/* Backgrounds */
+// Backgrounds:
 
-.yellow-gradient {
-  background: #fceabb;  /* fallback for old browsers */
-  background: linear-gradient(to bottom right, #f8b500, #fceabb);
-}
+.yellow-gradient
+  background: #fceabb  // Fallback for old browsers.
+  background: linear-gradient(to bottom right, #f8b500, #fceabb)
 
-.black-gradient {
-  background: #000000;  /* fallback for old browsers */
-  background: linear-gradient(to bottom right, #434343, #000000);
-}
+.black-gradient
+  background: #000000  // Fallback for old browsers.
+  background: linear-gradient(to bottom right, #434343, #000000)
 
-/* Other */
+// Other:
 
-.pointer {
-  cursor: pointer;
-}
+.pointer
+  cursor: pointer
 
-.cursor-default {
-  cursor: default;
-}
+.cursor-default
+  cursor: default
 </style>
