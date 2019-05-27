@@ -2,6 +2,7 @@
   <div class="home">
     <div class="d-flex justify-content-between align-items-center black-gradient text-accent shadow p-2">
       <h1 class="ml-2 mr-5">gTab</h1>
+      <div class="mx-5" />
       <i class="material-icons large-icon ml-5 mr-2 p-2 pointer">add</i>
     </div>
     <div v-if="groups" class="d-flex flex-column secondary-text">
