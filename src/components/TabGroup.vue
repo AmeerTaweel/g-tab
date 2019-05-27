@@ -42,6 +42,14 @@ export default {
         head: `Open`,
         text: `this group in a new incognito window.`,
         runnable: () => {this.openInNewWindow(true)}
+      }, {
+        head: `Update`,
+        text: `with the tabs in this window.`,
+        runnable: this.updateWithTabsInThisWindow
+      }, {
+        head: `Add`,
+        text: `the current tab to this group.`,
+        runnable: this.updateWithCurrentTab
       }]
     }
   },
@@ -49,10 +57,10 @@ export default {
     group: Object
   },
   methods: {
-    toggleActions () {
+    toggleActions() {
       this.areActionsShown = !this.areActionsShown
     },
-    openInNewWindow (isIncognito) {
+    openInNewWindow(isIncognito) {
       chrome.windows.create({
         url: this.group.tabs,
         focused: true,
@@ -84,6 +92,18 @@ export default {
             })
           }
         }
+      })
+    },
+    updateWithTabsInThisWindow() {
+      chrome.tabs.query({currentWindow: true}, (tabs) => {
+          const urls = tabs.map(tab => tab.url)
+          this.group.tabs = urls
+      })
+    },
+    updateWithCurrentTab() {
+      chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
+          const url = tabs[0].url
+          this.group.tabs.push(url)
       })
     }
   }
