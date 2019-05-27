@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { constants } from 'crypto';
 export default {
   name: 'TabGroup',
   data () {
@@ -28,19 +29,19 @@ export default {
       actions: [{
         head: `Open`,
         text: `this group in a new window.`,
-        runnable: this.toggleActions
+        runnable: () => {this.openInNewWindow(false)}
       }, {
         head: `Add`,
         text: `this group to the tabs in this window.`,
-        runnable: this.toggleActions
+        runnable: this.openTabsInCurrentWindow
       }, {
         head: `Replace`,
         text: `this group with the tabs in this window.`,
-        runnable: this.toggleActions
+        runnable: this.replaceTabsInCurrentWindow
       }, {
         head: `Open`,
         text: `this group in a new incognito window.`,
-        runnable: this.toggleActions
+        runnable: () => {this.openInNewWindow(true)}
       }]
     }
   },
@@ -50,6 +51,40 @@ export default {
   methods: {
     toggleActions () {
       this.areActionsShown = !this.areActionsShown
+    },
+    openInNewWindow (isIncognito) {
+      chrome.windows.create({
+        url: this.group.tabs,
+        focused: true,
+        incognito: isIncognito,
+        type: `normal`
+      })
+    },
+    openTabsInCurrentWindow(){
+      for(let i = 0; i < this.group.tabs.length; i++){
+        chrome.tabs.create({
+          url: this.group.tabs[i]
+        })
+      }
+    },
+    replaceTabsInCurrentWindow(){
+      chrome.tabs.query({currentWindow: true}, (tabs) => {
+        if(tabs.length > this.group.tabs.length){
+          const tabIds = tabs.map(tab => tab.id)
+          chrome.tabs.remove(tabIds.splice(this.group.tabs.length, tabs.length))
+        }
+        for(let i = 0; i < this.group.tabs.length; i++){
+          if(i < tabs.length){
+            chrome.tabs.update(tabs[i].id, {
+              url: this.group.tabs[i]
+            })
+          } else {
+            chrome.tabs.create({
+              url: this.group.tabs[i]
+            })
+          }
+        }
+      })
     }
   }
 }

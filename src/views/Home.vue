@@ -24,13 +24,13 @@ export default {
     return {
       groups: [{
         name: `Test Group 1`,
-        tabs: [`www.facebook.com`, `www.google.com`]
+        tabs: [`https://www.facebook.com/`, `https://www.google.com/`]
       }, {
         name: `Test Group 2`,
-        tabs: [`www.facebook.com`, `www.google.com`]
+        tabs: [`https://www.facebook.com/`, `https://www.google.com/`]
       }, {
         name: `Test Group 3`,
-        tabs: [`www.facebook.com`]
+        tabs: [`https://www.facebook.com/`]
       }]
     }
   },
