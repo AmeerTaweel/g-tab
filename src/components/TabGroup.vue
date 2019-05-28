@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { constants } from 'crypto';
 export default {
   name: 'TabGroup',
   data () {
@@ -29,7 +28,7 @@ export default {
       actions: [{
         head: `Open`,
         text: `this group in a new window.`,
-        runnable: () => {this.openInNewWindow(false)}
+        runnable: () => { this.openInNewWindow(false) }
       }, {
         head: `Add`,
         text: `this group to the tabs in this window.`,
@@ -41,7 +40,7 @@ export default {
       }, {
         head: `Open`,
         text: `this group in a new incognito window.`,
-        runnable: () => {this.openInNewWindow(true)}
+        runnable: () => { this.openInNewWindow(true) }
       }, {
         head: `Update`,
         text: `with the tabs in this window.`,
@@ -57,10 +56,10 @@ export default {
     group: Object
   },
   methods: {
-    toggleActions() {
+    toggleActions () {
       this.areActionsShown = !this.areActionsShown
     },
-    openInNewWindow(isIncognito) {
+    openInNewWindow (isIncognito) {
       chrome.windows.create({
         url: this.group.tabs,
         focused: true,
@@ -68,21 +67,21 @@ export default {
         type: `normal`
       })
     },
-    openTabsInCurrentWindow(){
-      for(let i = 0; i < this.group.tabs.length; i++){
+    openTabsInCurrentWindow () {
+      for (let i = 0; i < this.group.tabs.length; i++) {
         chrome.tabs.create({
           url: this.group.tabs[i]
         })
       }
     },
-    replaceTabsInCurrentWindow(){
-      chrome.tabs.query({currentWindow: true}, (tabs) => {
-        if(tabs.length > this.group.tabs.length){
+    replaceTabsInCurrentWindow () {
+      chrome.tabs.query({ currentWindow: true }, (tabs) => {
+        if (tabs.length > this.group.tabs.length) {
           const tabIds = tabs.map(tab => tab.id)
           chrome.tabs.remove(tabIds.splice(this.group.tabs.length, tabs.length))
         }
-        for(let i = 0; i < this.group.tabs.length; i++){
-          if(i < tabs.length){
+        for (let i = 0; i < this.group.tabs.length; i++) {
+          if (i < tabs.length) {
             chrome.tabs.update(tabs[i].id, {
               url: this.group.tabs[i]
             })
@@ -94,16 +93,16 @@ export default {
         }
       })
     },
-    updateWithTabsInThisWindow() {
-      chrome.tabs.query({currentWindow: true}, (tabs) => {
-          const urls = tabs.map(tab => tab.url)
-          this.group.tabs = urls
+    updateWithTabsInThisWindow () {
+      chrome.tabs.query({ currentWindow: true }, (tabs) => {
+        const urls = tabs.map(tab => tab.url)
+        this.group.tabs = urls
       })
     },
-    updateWithCurrentTab() {
-      chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
-          const url = tabs[0].url
-          this.group.tabs.push(url)
+    updateWithCurrentTab () {
+      chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+        const url = tabs[0].url
+        this.group.tabs.push(url)
       })
     }
   }
