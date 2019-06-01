@@ -4,6 +4,19 @@
   </div>
 </template>
 
+<script>
+import * as types from './mutation-types'
+
+export default {
+  name: `app`,
+  created () {
+    chrome.storage.sync.get([`groups`], (result) => {
+        this.$store.commit(types.SET_GROUPS, result.groups)
+    })
+  }
+}
+</script>
+
 <style lang="sass">
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
