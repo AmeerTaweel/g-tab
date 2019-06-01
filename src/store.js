@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as types from './mutation-types'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    groups: []
   },
   mutations: {
-
-  },
-  actions: {
-
+    [types.SET_GROUPS] (state, payload) {
+      state.groups = payload
+    }
   }
 })
