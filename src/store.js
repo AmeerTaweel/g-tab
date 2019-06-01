@@ -11,6 +11,11 @@ export default new Vuex.Store({
   mutations: {
     [types.SET_GROUPS] (state, payload) {
       state.groups = payload
+      saveToStorage(state)
     }
   }
 })
+
+const saveToStorage = (obj) => {
+  chrome.storage.sync.set(obj)
+}
