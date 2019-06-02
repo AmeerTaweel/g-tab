@@ -9,8 +9,24 @@ export default new Vuex.Store({
     groups: []
   },
   mutations: {
-    [types.SET_GROUPS] (state, payload) {
-      state.groups = payload
+    [types.SET_GROUPS] (state, groups) {
+      state.groups = groups
+      saveToStorage(state)
+    },
+    [types.UPDATE_GROUP] (state, payload) {
+      const index = payload.index
+      const tabs = payload.tabs
+      state.groups[index].tabs = tabs
+      saveToStorage(state)
+    },
+    [types.PUSH_TO_GROUP] (state, payload) {
+      const index = payload.index
+      const tab = payload.tab
+      state.groups[index].tabs.push(tab)
+      saveToStorage(state)
+    },
+    [types.DELETE_GROUP] (state, index) {
+      state.groups.splice(index, 1)
       saveToStorage(state)
     }
   }

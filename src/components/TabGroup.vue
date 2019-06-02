@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import * as types from '../mutation-types'
+
 export default {
   name: 'TabGroup',
   data () {
@@ -49,10 +51,15 @@ export default {
         head: `Add`,
         text: `the current tab to this group.`,
         runnable: this.updateWithCurrentTab
+      }, {
+        head: `Delete`,
+        text: `this group.`,
+        runnable: this.delete
       }]
     }
   },
   props: {
+    index: Number,
     group: Object
   },
   methods: {
@@ -96,14 +103,24 @@ export default {
     updateWithTabsInThisWindow () {
       chrome.tabs.query({ currentWindow: true }, (tabs) => {
         const urls = tabs.map(tab => tab.url)
-        this.group.tabs = urls
+        this.$store.commit(types.UPDATE_GROUP, {
+          index: this.index,
+          tabs: urls
+        })
       })
     },
     updateWithCurrentTab () {
       chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
         const url = tabs[0].url
-        this.group.tabs.push(url)
+        this.$store.commit(types.PUSH_TO_GROUP, {
+          index: this.index,
+          tab: url
+        })
       })
+    },
+    delete () {
+      this.toggleActions()
+      this.$store.commit(types.DELETE_GROUP, this.index)
     }
   }
 }

@@ -8,7 +8,7 @@
     <div v-if="groups" class="d-flex flex-column secondary-text">
       <div v-for="(group, index) in groups" :key="index" class="mx-3">
         <hr v-if="index" class="border border-dark">
-        <tab-group :group="group" class="py-3 pointer"/>
+        <tab-group :group="group" :index="index" class="py-3 pointer"/>
       </div>
     </div>
     <p v-else>No tab groups found.</p>
@@ -23,27 +23,21 @@ export default {
   name: `home`,
   data () {
     return {
-      groups: [{
-        name: `Test Group 1`,
-        tabs: [`https://www.facebook.com/`, `https://www.google.com/`]
-      }, {
-        name: `Test Group 2`,
-        tabs: [`https://www.facebook.com/`, `https://www.google.com/`]
-      }, {
-        name: `Test Group 3`,
-        tabs: [`https://www.facebook.com/`]
-      }]
+      groups: this.$store.state.groups
     }
   },
   methods: {
-    readGroups () {
-      return chrome.storage.sync.get([`groups`], (result) => {
-        return result
-      })
+    updateGroups () {
+      this.groups = this.$store.state.groups
     }
   },
-  created () {
-    // this.groups = this.readGroups()
+  computed: {
+    storeGroups(){
+      return this.$store.state.groups
+    }
+  },
+  watch: {
+    storeGroups: `updateGroups`
   },
   components: {
     TabGroup
