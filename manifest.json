@@ -1,5 +1,6 @@
 {
     "name": "gTab",
+    "short_name": "gTab",
     "version": "1.0",
     "description": "gTab is a tab management extension for Google Chrome, built with Vue.js.",
     "permissions": ["storage", "tabs"],
