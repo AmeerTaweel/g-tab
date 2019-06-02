@@ -3,7 +3,7 @@
     <div>
       <div @click="toggleActions">
         <h2 class="text-justify">{{group.name}}</h2>
-        <p class="text-justify">{{group.tabs.length}} Tab<span v-if="group.tabs.length > 1">s</span></p>
+        <p class="text-justify">{{group.tabs.length}} Tab<span v-if="group.tabs.length !== 1">s</span></p>
       </div>
       <div v-if="areActionsShown" class="container cursor-default">
         <div class="row">

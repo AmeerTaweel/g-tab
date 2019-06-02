@@ -28,6 +28,13 @@ export default new Vuex.Store({
     [types.DELETE_GROUP] (state, index) {
       state.groups.splice(index, 1)
       saveToStorage(state)
+    },
+    [types.CREATE_GROUP] (state, name) {
+      state.groups.push({
+        name: name,
+        tabs: []
+      })
+      saveToStorage(state)
     }
   }
 })
